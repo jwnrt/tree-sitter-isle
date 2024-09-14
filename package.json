@@ -1,0 +1,17 @@
+{
+  "name": "tree-sitter-isle",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for ISLE",
+  "main": "bindings/node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Wainwright",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.20.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.23.0"
+  }
+}
