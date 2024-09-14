@@ -201,7 +201,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "constant"
+              "name": "const_sym"
             },
             {
               "type": "SYMBOL",
@@ -395,7 +395,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "constant"
+          "name": "boolean"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "const_sym"
         },
         {
           "type": "STRING",
@@ -571,7 +575,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "constant"
+          "name": "const_sym"
         },
         {
           "type": "SYMBOL",
@@ -700,7 +704,7 @@
       "type": "PATTERN",
       "value": "[A-Za-z_][A-Za-z0-9_.$]*"
     },
-    "constant": {
+    "const_sym": {
       "type": "PATTERN",
       "value": "\\$[A-Za-z0-9_.$]*"
     },

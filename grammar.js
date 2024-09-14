@@ -4,15 +4,20 @@
 module.exports = grammar({
   name: 'isle',
 
+  // Tokens that can appear anywhere and are ignored.
   extras: $ => [
     /\s/,
     $.line_comment,
   ],
 
+  // Integers match both `priority` and `pattern` in the same position, so we
+  // have to tell TS they're conflicting. It will do some extra work to resolve
+  // the tree.
   conflicts: $ => [
     [$.priority, $.pattern],
   ],
 
+  // Ensure keywords are not tokenised as `identifier`s.
   word: $ => $.identifier,
 
   rules: {
@@ -37,7 +42,7 @@ module.exports = grammar({
     extern: $ => choice(
       seq('constructor', $.identifier, $.identifier),
       seq('extractor', optional('infallible'), $.identifier, $.identifier),
-      seq('const', $.constant, $.identifier, $.type),
+      seq('const', $.const_sym, $.identifier, $.type),
     ),
 
     primitive: $ => seq('(', 'primitive', $.identifier, ')'),
@@ -50,7 +55,14 @@ module.exports = grammar({
 
     type: $ => $.identifier,
 
-    decl: $ => seq(repeat(choice("pure", "partial")), $.identifier, '(', repeat($.type), ')', $.type),
+    decl: $ => seq(
+      repeat(choice("pure", "partial")),
+      $.identifier,
+      '(',
+      repeat($.type),
+      ')',
+      $.type,
+    ),
 
     rule: $ => seq(optional($.priority), $.pattern, repeat($.condition), $.expression),
 
@@ -59,7 +71,7 @@ module.exports = grammar({
     pattern: $ => choice(
       $.integer,
       $.boolean,
-      $.constant,
+      $.const_sym,
       '_',
       seq($.identifier, optional(seq('@', $.pattern))),
       seq('(', 'and', repeat($.pattern), ')'),
@@ -74,7 +86,7 @@ module.exports = grammar({
 
     expression: $ => choice(
       $.integer,
-      $.constant,
+      $.const_sym,
       $.boolean,
       $.identifier,
       seq('(', 'let', '(', repeat($.let_binding), ')', $.expression, ')'),
@@ -87,7 +99,7 @@ module.exports = grammar({
 
     identifier: $ => /[A-Za-z_][A-Za-z0-9_.$]*/,
 
-    constant: $ => /\$[A-Za-z0-9_.$]*/,
+    const_sym: $ => /\$[A-Za-z0-9_.$]*/,
 
     integer: $ => choice(
       /-?[0-9][0-9_]*/,

@@ -139,7 +139,7 @@
           "named": true
         },
         {
-          "type": "constant",
+          "type": "const_sym",
           "named": true
         },
         {
@@ -170,7 +170,7 @@
       "required": true,
       "types": [
         {
-          "type": "constant",
+          "type": "const_sym",
           "named": true
         },
         {
@@ -279,7 +279,11 @@
       "required": false,
       "types": [
         {
-          "type": "constant",
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "const_sym",
           "named": true
         },
         {
@@ -486,7 +490,7 @@
     "named": false
   },
   {
-    "type": "constant",
+    "type": "const_sym",
     "named": true
   },
   {

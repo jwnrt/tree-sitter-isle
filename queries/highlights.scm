@@ -2,7 +2,7 @@
 (line_comment) @comment
 
 ; Textual tokens
-(constant) @constant
+(const_sym) @constant
 (type) @type
 
 ; Assume PascalCase identifiers are types.
