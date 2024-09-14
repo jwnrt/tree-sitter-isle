@@ -35,10 +35,10 @@ ISLE uses an S-expression syntax and looks something like this:
 
 ## Usage
 
-Refer to the [tree-sitter docs] for using this grammar directly, or consult your
-chosen text-editor's documentation for integration help.
+Refer to the [tree-sitter docs][ts-using] for using this grammar directly, or
+consult your chosen text-editor's documentation for integration help.
 
-[tree-sitter docs]: https://tree-sitter.github.io/tree-sitter/using-parsers
+[ts-using]: https://tree-sitter.github.io/tree-sitter/using-parsers
 
 <details><summary>
 
@@ -74,6 +74,15 @@ chosen text-editor's documentation for integration help.
    ```
 
 </details>
+
+## Contributing
+
+I'd recommend the [tree-sitter docs][ts-creating] to understand what's going
+on in this repo. The important files are [`grammar.js`](grammar.js) and
+[`queries/highlights.scm`](queries/highlights.scm). All other files were/are
+generated with `tree-sitter generate`.
+
+[ts-creating]: https://tree-sitter.github.io/tree-sitter/creating-parsers
 
 ## License
 
